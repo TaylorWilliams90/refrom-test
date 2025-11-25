@@ -8,7 +8,7 @@ import Card from '../components/Card';
 import { cardData } from '../data/cardData';
 
 export default function Home() {
-  // 1. CAROUSEL HOOKS: All hooks must be defined unconditionally at the top level.
+
   const trackRef = useRef(null);
   const viewportRef = useRef(null);
 
@@ -18,30 +18,30 @@ export default function Home() {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    // Set initial width
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  // The carousel logic (no changes)
+
   useGSAP(() => {
     const track = trackRef.current;
     const viewport = viewportRef.current;
     
-    // Safety check
+
     if (!track || !viewport) return;
 
     const cardElements = gsap.utils.toArray('.card', track);  
     if (cardElements.length < 2 || !track) return;
 
-    const firstCard = cardElements[0];
+    const firstCard = cardElements[0] as HTMLElement; 
     const cardWidth = firstCard.offsetWidth;
     const cardHeight = firstCard.offsetHeight;
 
 
     gsap.set(track, { height: cardHeight });
 
-    const gap = 60; // Fixed pixel gap
+    const gap = 60; 
     const spacing = cardWidth + gap; 
     const totalWidth = spacing * cardElements.length;
     const wrapX = gsap.utils.wrap(-spacing, totalWidth - spacing);
@@ -71,7 +71,7 @@ export default function Home() {
       const nextIndex = (i + 1) % cardElements.length;
       const nextCard = cardElements[nextIndex];
 
-      // Step A: Scale Down Current
+      
       masterTimeline.to(currentCard, { 
         scale: 1, 
         zIndex: 1,
