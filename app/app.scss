@@ -1,0 +1,422 @@
+@import "./fonts";
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+@keyframes arrow-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes arrow-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes textup {
+  from {
+    margin-top: 75px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  max-width: 1440px;
+  margin: 32px auto;
+
+  @media (width < 1440px) {
+    margin: 32px;
+  }
+
+@media (width < 767px) {
+    margin: 12px;
+  }
+
+  .hero-section,
+  .card-section {
+    flex: 1;
+    width: auto;
+  }
+
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    .top-text {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .bottom-text {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: auto;
+      position: relative;
+      span#gsap-text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        justify-content: center;
+        h1 {
+          @media (width < 767px) {
+            margin-top: 75px;
+            animation: textup 1s 3.5s linear forwards;
+          }
+        }
+
+        .box-grid {
+          width: calc(100vw - 740px);
+          max-width: 640px;
+          display: flex;
+          flex-direction: row;
+          height: 79px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 12px;
+          border: 1px solid #ccddc7;
+          gap: 30px;
+          overflow: hidden;
+
+          @media (width <= 1024px) {
+            max-width: 250px;
+          }
+          @media (width <= 900) {
+            width: 100%;
+            position: absolute;
+            top: 0;
+          }
+          .marquee-wrapper {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            width: fit-content;
+            overflow: hidden;
+            justify-content: center;
+            .item-group {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              width: auto;
+              gap: 30px;
+              flex: 1;
+
+              .text {
+                p {
+                  white-space: nowrap;
+                  color: #d87906;
+                  text-align: center;
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 120%; /* 14.4px */
+                  letter-spacing: 1.2px;
+                  text-transform: uppercase;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .card-section {
+    display: flex;
+    flex-direction: row;
+
+    @media (width < 767px) {
+        flex-direction: column-reverse;
+    }
+
+    .text-button,
+    .cards-viewport {
+      flex: 1;
+    }
+
+    .text-button {
+      border: 1px solid #ccddc7;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      p {
+        max-width: 500px;
+      }
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 6px;
+        transition: transform 1s ease;
+        width: fit-content;
+        &:hover {
+          .moving-arrow {
+            margin-left: 0px;
+            svg {
+              path {
+                stroke: #00b684;
+              }
+              g#arrow-left {
+                opacity: 0;
+              }
+            }
+          }
+          .btn {
+            margin-left: 60px;
+            color: #00b684;
+            border: 0.75px solid #00b684;
+            background: #fff;
+          }
+        }
+        &:focus {
+          .moving-arrow {
+            margin-left: 0px;
+            svg {
+              g#arrow-right {
+                animation: arrow-right 0.5s linear forwards;
+              }
+              g#arrow-left {
+                animation: arrow-left 0.5s 0.5s linear forwards;
+              }
+              path {
+                stroke: #00b684;
+              }
+            }
+          }
+          .btn {
+            margin-left: 60px;
+            color: #00b684;
+            border: 0.75px solid #00b684;
+            background: #fff;
+          }
+        }
+        .btn {
+          position: absolute;
+          margin-left: 0;
+          transition: margin-left 1s ease;
+        }
+        .moving-arrow {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 250px;
+          transition: margin-left 1s ease;
+          svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+    .cards-viewport {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #ccddc7;
+      background: #fbfaf6;
+      overflow: hidden;
+
+      @media (width <= 1024) {
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      .cards-track {
+        display: block;
+        width: fit-content;
+        margin: auto 0 auto 135px;
+        
+
+        @media (width < 767px) {
+            margin: auto 0 auto -200px;
+        }   
+
+        @media (width <= 1024) {
+          flex-direction: column;
+          margin: auto 0 auto -350px;
+        }
+
+        .cards-group {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .card {
+                
+                border-radius: 12px;
+                border: 1px solid #6e9e8f;
+                background: #f2f4ed;
+                flex-shrink: 0;
+                transform: scale(1);
+                transform-origin: center center;
+                padding: 32px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 40px;
+
+                @media (width < 767px) {
+                    padding: 12px;
+                    gap: 31px; 
+                }
+
+                .top-card {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: auto;
+                .profile-img {
+                    width: 80px;
+                    height: 80px;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: lightgray;
+                    border-radius: 8px;
+
+                    @media (width < 767px) {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    img {
+                    width: auto;
+                    height: auto;
+                    object-position: center;
+                    object-fit: cover;
+                    }
+                }
+                .profile-info {
+                    display: flex;
+                    flex-direction: column;
+                    .profile-name {
+                    color: #6e9e8f;
+                    text-align: right;
+                    font-family: Söhne;
+                    font-size: 16px;
+                    line-height: 130%; /* 20.8px */
+                    letter-spacing: 1.6px;
+                    text-transform: uppercase;
+
+                    @media (width < 767px) {
+                        font-size: 8px;
+                    }
+                    }
+                    .profile-title {
+                    color: #6e9e8f;
+                    text-align: right;
+                    font-family: Söhne;
+                    font-size: 12px;
+                    line-height: 130%; /* 15.6px */
+                    letter-spacing: 1.2px;
+                    text-transform: uppercase;
+                    @media (width < 767px) {
+                        font-size: 6px;
+                    }
+                    }
+                    .profile-number {
+                    color: #6e9e8f;
+                    text-align: right;
+                    font-family: "Söhne Mono";
+                    font-size: 10px;
+                    line-height: 130%; /* 13px */
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    @media (width < 767px) {
+                        font-size: 5px;
+                    }
+                    }
+                }
+                }
+
+                .bottom-card {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+               
+                @media (width < 767px) {
+                   
+                }
+                .company-info {
+                    display: flex;
+                    flex-direction: column;
+
+                    .company-name {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 5px;
+                    color: #6e9e8f;
+                    font-family: Söhne;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 140%; /* 33.6px */
+                    letter-spacing: -0.72px;
+                    @media (width < 767px) {
+                        font-size: 12px;
+                        gap: 1px;
+
+                        svg{
+                            width: 6px;
+                            height: 4px;
+                        }
+                    }
+                    }
+                     
+                    .company-details{
+                        svg{
+                            @media (width < 767px) {
+                               width: 154px;
+                                height: 3px;
+                            }
+                        }
+                    }
+                }
+                .barcode {
+                    display: flex;
+                    align-items: flex-end;
+                    @media (width < 767px) {
+                        width: 30px;
+                        height: 10px;
+                    }
+                }
+                }
+          }
+        }
+      }
+    }
+  }
+}

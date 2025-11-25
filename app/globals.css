@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+* {
+  font-family: Söhne;
+}
+ 
+h1{
+  color:#153E2A;
+  font-family: Söhne;
+  font-size: 112px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 134.4px */
+  letter-spacing: -3.36px;
+  text-align: center;
+}
+
+p{
+  font-family: Söhne;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 33.6px */
+  letter-spacing: -0.72px;
+}
+
+button, .btn {
+  display: flex;
+  height: 50px;
+  padding: 0 24px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 25px;
+  border: 0.75px solid #30715D;
+  background: #FBFAF6;
+  font-size: 16px;
+}
+@media (width <= 1024px) {
+    h1 {
+      font-size: 90px;
+    }
+    p {
+      font-size: 14px;
+    }
+}
+
+@media (width < 767px) {
+    h1 {
+      font-size: 48px;
+    }
+    p {
+      font-size: 14px;
+    }
+}

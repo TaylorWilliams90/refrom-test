@@ -1,0 +1,15 @@
+ @font-face {
+    font-family: "Söhne";
+    src:    url(/fonts/soehne-buch.woff2) format("woff2"),
+            url(/fonts/Söhne-Buch.otf) format("otf");
+    font-style: normal;
+    font-weight: 400;
+ }
+
+  @font-face {
+    font-family: "Söhne Mono";
+    src:    url(/fonts/soehne-mono-buch.woff2) format("woff2"),
+            url(/fonts/SöhneMono-Buch.otf) format("otf");
+    font-style: normal;
+    font-weight: 400;
+ }
