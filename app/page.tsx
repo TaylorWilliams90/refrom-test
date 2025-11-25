@@ -59,7 +59,7 @@ export default function Home() {
     const animationDuration = 1; 
     const pauseDuration = 1.5;
 
-    gsap.set(cardElements[0], { scale: 1.2, zIndex: 10 });
+    const cardElements = gsap.utils.toArray('.card', track) as HTMLElement[];
 
     const masterTimeline = gsap.timeline({
       repeat: -1, 
