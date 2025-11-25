@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({ info }) => {
+const Card = ({ info }: { info: any }) => {
   return (
     <div className="card" id={info.id}>
             <div className="top-card">

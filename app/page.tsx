@@ -9,9 +9,8 @@ import { cardData } from '../data/cardData';
 
 export default function Home() {
 
-  const trackRef = useRef(null);
-  const viewportRef = useRef(null);
-
+  const trackRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -28,10 +27,10 @@ export default function Home() {
     const track = trackRef.current;
     const viewport = viewportRef.current;
     
-
+    
     if (!track || !viewport) return;
 
-    const cardElements = gsap.utils.toArray('.card', track);  
+    const cardElements = gsap.utils.toArray<HTMLElement>('.card', track);
     if (cardElements.length < 2 || !track) return;
 
     const firstCard = cardElements[0] as HTMLElement; 
@@ -59,7 +58,7 @@ export default function Home() {
     const animationDuration = 1; 
     const pauseDuration = 1.5;
 
-    const cardElements = gsap.utils.toArray('.card', track) as HTMLElement[];
+    gsap.set(cardElements[0] as HTMLElement, { scale: 1.2, zIndex: 10 });
 
     const masterTimeline = gsap.timeline({
       repeat: -1, 
